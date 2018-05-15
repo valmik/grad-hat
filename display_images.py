@@ -40,9 +40,15 @@ def display_image_to_matrix(image, matrix):
 def main():
 
     if len(sys.argv) < 2:
-        sys.exit("require an image argument")
+        sys.exit("require a command argument")
     else:
         image_set = sys.argv[1]
+
+    random = False
+
+    if image_set is "random":
+        random = True
+
 
     sets = {"broccoli_test": ["broccoli.png", "broccoli_black.png"],
         "snorunt": 8,
@@ -51,9 +57,14 @@ def main():
         "schwifty": 22,
         "engineer": 16,
         "ea": ["ea.png", "ea.png"],
-        "meche": ["meche.png", "meche.png"]}
+        "meche": ["meche.png", "meche2.png"]}
+
+    random_keys = ["snorunt", "fireworks", "uc_broccoli", "ea", "meche"]
 
     image_path = "images/"
+
+    if random:
+        image_set = random.choice(random_keys)
 
     if isinstance(sets[image_set], (int, long)):
         slides = []
@@ -74,7 +85,23 @@ def main():
     try:
         print("Press CTRL-C to stop")
         index = 0
+        start_time = time.time()
         while True:
+
+            if random:
+                if time.time() > (start_time+30):
+                    start_time = time.time()
+                    index = 0
+                    image_set = random.choice(random_keys)
+
+                    if isinstance(sets[image_set], (int, long)):
+                        slides = []
+                        for i in range(sets[image_set]):
+                            slides.append(str(i) + ".gif")
+                    else:
+                        slides = sets[image_set]
+
+
             if index == len(slides):
                 index = 0
             print index
