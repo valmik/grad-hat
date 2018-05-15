@@ -45,10 +45,17 @@ def main():
         image_set = sys.argv[1]
 
     sets = {"broccoli_test": ["broccoli.png", "broccoli_black.png"],
-        "snorunt": ["0.gif", "1.gif", "2.gif", "3.gif", "4.gif", "5.gif", "6.gif", "7.gif"]}
+        "snorunt": ["0.gif", "1.gif", "2.gif", "3.gif", "4.gif", "5.gif", "6.gif", "7.gif"],
+        "fireworks": 23}
 
     image_path = "images/"
-    slides = sets[image_set]
+
+    if isinstance(sets[image_set], (int, long)):
+        slides = []
+        for i in range(sets[image_set]):
+            slides.append(str(i) + ".gif")
+    else:
+        slides = sets[image_set]
 
     options = RGBMatrixOptions()
     options.rows = 32
