@@ -38,7 +38,7 @@ def display_image_to_matrix(image, matrix):
 
 
 def main():
-    image_path = "/images/"
+    image_path = "images/"
     slides = ["broccoli.png", "broccoli_black.png"]
 
     options = RGBMatrixOptions()
