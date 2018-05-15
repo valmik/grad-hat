@@ -40,13 +40,13 @@ def main():
     width = imgwidth/2
     startnum = 0
 
-    long_img = Image.new('L', (width*4, height))
+    long_img = Image.new('RGB', (width*4, height))
     x_offset = 0;
     for k, piece in enumerate(crop(image, height, width), startnum):
         long_img.paste(piece, (x_offset, 0))
         x_offset += piece.size[0]
 
-        img = Image.new('L', (width, height), 255)
+        img = Image.new('RGB', (width, height), 255)
         img.paste(piece)
 
         img.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
