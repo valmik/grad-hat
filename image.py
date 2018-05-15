@@ -39,7 +39,7 @@ def main():
     width = imgwidth/2
     startnum = 0
 
-    for k, piece in enumerate(crop(im, height, width), startnum):
+    for k, piece in enumerate(crop(image, height, width), startnum):
 
         img = Image.new('L', (width, height), 255)
         img.paste(piece)
