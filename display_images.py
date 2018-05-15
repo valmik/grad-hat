@@ -45,8 +45,9 @@ def main():
         image_set = sys.argv[1]
 
     sets = {"broccoli_test": ["broccoli.png", "broccoli_black.png"],
-        "snorunt": ["0.gif", "1.gif", "2.gif", "3.gif", "4.gif", "5.gif", "6.gif", "7.gif"],
-        "fireworks": 23}
+        "snorunt": 8,
+        "fireworks": 23
+        "uc_broccoli": ["uc.png", "broccoli.png"]}
 
     image_path = "images/"
 
