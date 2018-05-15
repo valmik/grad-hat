@@ -25,7 +25,7 @@ options.hardware_mapping = 'adafruit-hat'
 
 matrix = RGBMatrix(options = options)
 
-image.thumbnail(matrix.width, matrix.height)
+image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
 
 matrix.SetImage(image.convert('RGB'))
 
