@@ -66,7 +66,7 @@ def main():
             if index == len(slides):
                 index = 0
             print index
-            image_file = image_path + image_set + slides[index]
+            image_file = image_path + image_set + '/' + slides[index]
             image = Image.open(image_file)
             display_image_to_matrix(image, matrix)
             index = index + 1
