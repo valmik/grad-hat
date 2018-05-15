@@ -50,7 +50,7 @@ def main():
         "uc_broccoli": ["uc.png", "uc.png", "uc.png", "broccoli.png", "broccoli.png", "broccoli.png"],
         "schwifty": 22,
         "engineer": 16,
-        "ea": ["ea.png", "ea.png"]
+        "ea": ["ea.png", "ea.png"],
         "meche": ["meche.png", "meche.png"]}
 
     image_path = "images/"
