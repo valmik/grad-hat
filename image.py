@@ -2,6 +2,7 @@
 
 # Referenced code from hzeller rpi-rgb-led-matrix python examples: https://github.com/hzeller/rpi-rgb-led-matrix/tree/master/bindings/python
 # Referenced code from alexlib split_image_4_quarters.py: https://gist.github.com/alexlib/ef7df7bfdb3dba1698f4
+# Referenced DTing's answer at: https://stackoverflow.com/questions/30227466/combine-several-images-horizontally-with-python?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
 
 import sys
 import time
@@ -39,7 +40,11 @@ def main():
     width = imgwidth/2
     startnum = 0
 
+    long_img = Image.new('L', (width*4, height))
+    x_offset = 0;
     for k, piece in enumerate(crop(image, height, width), startnum):
+        long_img.paste(piece, (x_offset, 0))
+        x_offset += piece.size[0]
 
         img = Image.new('L', (width, height), 255)
         img.paste(piece)
@@ -48,6 +53,9 @@ def main():
 
         matrix.SetImage(img.convert('RGB'))
         time.sleep(1)
+
+    long_img.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
+    matrix.SetImage(long_img.convert('RGB'))
 
     try:
         print("Press CTRL-C to stop")
