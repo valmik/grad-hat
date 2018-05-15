@@ -46,7 +46,7 @@ def main():
 
     sets = {"broccoli_test": ["broccoli.png", "broccoli_black.png"],
         "snorunt": 8,
-        "fireworks": 23
+        "fireworks": 23,
         "uc_broccoli": ["uc.png", "broccoli.png"]}
 
     image_path = "images/"
