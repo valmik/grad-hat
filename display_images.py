@@ -56,6 +56,7 @@ def main():
         while True:
             if index == len(slides):
                 index = 0
+            print index
             image_file = image_path + slides[index]
             image = Image.open(image_file)
             display_image_to_matrix(image, matrix)
