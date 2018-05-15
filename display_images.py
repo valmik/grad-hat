@@ -38,8 +38,17 @@ def display_image_to_matrix(image, matrix):
 
 
 def main():
+
+    if len(sys.argv) < 2:
+        sys.exit("require an image argument")
+    else:
+        image_set = sys.argv[1]
+
+    sets = {"broccoli_test": ["broccoli.png", "broccoli_black.png"],
+        "snorunt": ["0.gif", "1.gif", "2.gif", "3.gif", "4.gif", "5.gif", "6.gif", "7.gif"]}
+
     image_path = "images/"
-    slides = ["broccoli.png", "broccoli_black.png"]
+    slides = sets[image_set]
 
     options = RGBMatrixOptions()
     options.rows = 32
@@ -57,7 +66,7 @@ def main():
             if index == len(slides):
                 index = 0
             print index
-            image_file = image_path + slides[index]
+            image_file = image_path + image_set + slides[index]
             image = Image.open(image_file)
             display_image_to_matrix(image, matrix)
             index = index + 1
