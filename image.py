@@ -9,8 +9,13 @@ import time
 from rgbmatrix import RGBMatrix, RGBMatrixOptions
 from PIL import Image
 
-
-
+def crop(im,height,width):
+    imgwidth, imgheight = im.size
+    for i in range(imgheight//height):
+        for j in range(imgwidth//width):
+            # print (i,j)
+            box = (j*width, i*height, (j+1)*width, (i+1)*height)
+            yield im.crop(box)
 
 def main():
     if len(sys.argv) < 2:
@@ -29,9 +34,20 @@ def main():
 
     matrix = RGBMatrix(options = options)
 
-    image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
+    imgwidth, imgheight = image.size
+    height = imgheight/2
+    width = imgwidth/2
+    startnum = 0
 
-    matrix.SetImage(image.convert('RGB'))
+    for k, piece in enumerate(crop(im, height, width), startnum):
+
+        img = Image.new('L', (width, height), 255)
+        img.paste(piece)
+
+        img.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
+
+        matrix.SetImage(img.convert('RGB'))
+        time.sleep(1)
 
     try:
         print("Press CTRL-C to stop")
@@ -39,8 +55,6 @@ def main():
             time.sleep(100)
     except KeyboardInterrupt:
         sys.exit(0)
-
-
 
 
 
