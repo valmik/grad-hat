@@ -61,7 +61,7 @@ def main():
             image = Image.open(image_file)
             display_image_to_matrix(image, matrix)
             index = index + 1
-            time.sleep(100)
+            time.sleep(0.1)
 
     except KeyboardInterrupt:
         sys.exit(0)
